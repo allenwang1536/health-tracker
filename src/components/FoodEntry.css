@@ -1,0 +1,27 @@
+.food-entry {
+    display: flex;
+    justify-content: space-between;
+    outline: 1px solid #101314f1;
+    border-radius: 5px;
+    padding: 0 1rem 0;
+    background-color: #4c606d;
+}
+
+.food-entry:hover {
+    background-color: rgb(62, 62, 62);
+    color: white;
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: all 0.5s ease;
+}
+
+.food-entry-name {
+    width: auto;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.food-entry-calories {
+    flex: 0 0 auto;
+}

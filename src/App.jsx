@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import NewItemForm from "./NewItemForm"
-import TodoList from "./TodoList"
-
-import "./styles.css";
+import 'dotenv';
+import axios from "axios";
+import moment from 'moment';
+import "./App.css";
+import FoodCards from "./components/FoodCards";
+import Header from "./components/Header";
 
 export default function App() {
+
   const [items, setItems] = useState(() => {
     const localValue = localStorage.getItem("ITEMS");
     if (localValue === null) return [];
@@ -44,12 +47,15 @@ export default function App() {
     ))
   }
 
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
+
+
   return (
     <>
-
-      <NewItemForm onSubmit={addItem} />
-      <TodoList handleCheck={handleCheck} handleDelete={handleDelete} items={items} />
-
+      <Header />
+      <FoodCards />
     </>
   )
 }

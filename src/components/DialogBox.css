@@ -1,0 +1,40 @@
+.add-new-food-button {
+    border-radius: 10px;
+    background-color: #4c606d;
+    color: white;
+    padding: 0.5rem 1rem 0.5rem;
+    outline: 1px solid #101314f1;
+}
+
+.dialogue-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.dialogue-box-pop-up {
+    background-color: #36454f;
+    border-radius: 10px;
+    color: white;
+}
+
+.dialogue-box-info {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 100%;
+}
+
+.dialogue-box-info label input {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.dialogue-box-info label {
+    padding-bottom: 1rem;
+}
+
+.exit-submit-container {
+    display: flex;
+    justify-content: space-between;
+}
