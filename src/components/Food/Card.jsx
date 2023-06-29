@@ -39,11 +39,11 @@ export default function Card({ mealType, foodEntries }) {
 
                     {foodEntries.map((foodEntry) => {
                         return (
-                            < Entry onClick={() => handleTransitionOpen(foodEntry.id)} food={foodEntry.name} calories={foodEntry.calories} />
+                            < Entry onClick={() => handleTransitionOpen(foodEntry.id)} foodEntry={foodEntry} />
                         )
                     })}
 
-                    <DialogBox className="add-new-food-button" />
+                    <DialogBox className="add-new-food-button" defaultMealType={mealType}/>
                 </div>
 
                 <div className="card-content-expanded">

@@ -59,10 +59,6 @@ i {
     flex-grow: 0;
 }
 
-/* .calories-remaining-expression p {
-    margin: 0 2rem 0;
-} */
-
 .calories-remaining-expression-term {
     display: flex;
     flex-direction: column;
@@ -71,4 +67,13 @@ i {
     align-items: center;
     flex-basis: 0;
     flex-grow: 1;
+}
+
+.goal-input {
+    width: 80px;
+    display: inline-block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }

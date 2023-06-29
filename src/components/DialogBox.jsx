@@ -2,12 +2,10 @@ import "./DialogBox.css";
 import { useState, useRef } from "react";
 import { onSubmit } from '../config/foods';
 
-function DialogBox() {
-
-    // const foodsCollectionRef = collection(db, "food-entries");
+function DialogBox({ defaultMealType}) {
 
     const dialogRef = useRef(null);
-    const [mealType, setMealType] = useState("Breakfast");
+    const [mealType, setMealType] = useState(defaultMealType);
     const [mealName, setMealName] = useState("");
     const [calories, setCalories] = useState();
     const [notes, setNotes] = useState("");
@@ -29,9 +27,7 @@ function DialogBox() {
 
         onSubmit(mealType, mealName, calories, notes);
 
-        // postEntries(mealType, mealName, calories, notes);
-
-        setMealType("Breakfast");
+        setMealType(defaultMealType);
         setMealName("");
         setCalories("");
         setNotes("");

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Card from './Card';
 import { db } from '../../config/firebase';
-import { getDocs, collection, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 
 import './Cards.css';
 
@@ -12,7 +12,7 @@ export default function Cards() {
 
     const [foodList, setFoodList] = useState(mealTypes.map(() => []));
     const foodsCollectionRef = collection(db, "food-entries");
-git 
+
     useEffect(() => {
         const unsubscribe = onSnapshot(foodsCollectionRef, (snapshot) => {
             const newFoodEntries = snapshot.docs.map((doc) => ({

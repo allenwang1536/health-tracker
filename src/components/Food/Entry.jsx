@@ -2,17 +2,17 @@ import React from 'react';
 
 import './Entry.css';
 
-export default function Entry( {onClick, food, calories } ) {
+export default function Entry( {onClick, foodEntry } ) {
 
     return (
         <>
             <form onClick={onClick}>
                 <div className="food-entry">
                     <p className="food-entry-name">
-                        Food: {food}
+                        Food: {foodEntry.name}
                     </p>
                     <p className="food-entry-calories">
-                        Calories: {calories} 
+                        Calories: {foodEntry.calories} 
                     </p>
                 </div>
             </form>

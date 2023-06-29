@@ -9,7 +9,7 @@ export async function onSubmit(foodType, foodName, calories, notes) {
             {
                 name: foodName,
                 mealType: foodType,
-                calories: calories,
+                calories: Number(calories),
                 notes: notes,
             }
         )

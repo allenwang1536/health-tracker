@@ -55,7 +55,8 @@
     top: 1.5rem;
 }
 
-.add-new-food-button, .remove-food-button {
+.add-new-food-button,
+.remove-food-button {
     border-radius: 10px;
     background-color: #4c606d;
     color: white;

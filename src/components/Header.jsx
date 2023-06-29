@@ -1,9 +1,38 @@
 import React from 'react';
-import DialogBox from './DialogBox';
+import { useState, useEffect } from 'react';
+import { db } from '../config/firebase';
+import { collection, onSnapshot } from 'firebase/firestore';
 
 import './Header.css';
 
 export default function Header() {
+
+    const [goalCalories, setGoalCalories] = useState(2000);
+    const [caloriesEaten, setCaloriesEaten] = useState(0);
+    const [editingGoal, setEditingGoal] = useState(false);
+
+    const foodsCollectionRef = collection(db, "food-entries");
+
+    useEffect(() => {
+        let sumCalories;
+        
+        const unsubscribe = onSnapshot(foodsCollectionRef, (snapshot) => {
+            sumCalories = 0;
+            snapshot.docs.forEach((doc) => {
+                sumCalories += doc.data().calories;
+            });
+
+            setCaloriesEaten(sumCalories);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    const handleBlur = (newGoal) => {
+        setEditingGoal(false);
+        setGoalCalories(newGoal);
+    }
+
     return (
         <>
             <div className="header-container">
@@ -22,17 +51,33 @@ export default function Header() {
                         <h4>Calories Remaining</h4>
                         <div className="calories-remaining-expression">
                             <div className="calories-remaining-expression-term">
-                                <p>2850</p>
+
+                                {editingGoal ?
+                                    <input
+                                        className='goal-input'
+                                        type='number'
+                                        defaultValue={goalCalories}
+                                        onBlur={(e) => handleBlur(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter') { e.target.blur(); }
+                                        }}
+                                    />
+                                    :
+                                    <p onDoubleClick={() => setEditingGoal(true)}>{goalCalories}</p>
+                                }
+
                                 <p>Goal</p>
                             </div>
                             <p className="calories-remaining-expression-term">-</p>
                             <div className="calories-remaining-expression-term calories-remaining-expression-center">
-                                <p>22430</p>
+                                <p>{caloriesEaten}</p>
                                 <p>Food</p>
                             </div>
                             <p className="calories-remaining-expression-term">=</p>
                             <div className="calories-remaining-expression-term">
-                                <p>420</p>
+                                <p>
+                                    {Math.max(0, goalCalories - caloriesEaten)}
+                                </p>
                                 <p>Remaining</p>
                             </div>
                         </div>
