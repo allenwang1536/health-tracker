@@ -3,8 +3,7 @@ import { useState } from 'react';
 import Entry from './Entry';
 import DialogBox from '../DialogBox';
 import Info from './Info';
-import { getDocs, collection, addDoc} from 'firebase/firestore';
-
+import { removeFood } from '../../config/foods';
 
 import './Card.css';
 
@@ -21,6 +20,12 @@ export default function Card({ mealType, foodEntries }) {
     const handleTransitionClose = () => {
         setIsTransitioned(false);
         setCurFoodEntryId(null);
+    }
+
+    const handleRemove = (curId) => {
+        removeFood(curFoodEntryId);
+        setCurFoodEntryId(null);
+        setIsTransitioned(false);
     }
 
     return (
@@ -46,6 +51,9 @@ export default function Card({ mealType, foodEntries }) {
                         <p> &lt; </p>
                     </form>
                     {curFoodEntryId === null ? null : <Info foodEntry={foodEntries.filter((foodEntry) => foodEntry.id === curFoodEntryId)[0]} />}
+                    <button className="remove-food-button" onClick={() => handleRemove(curFoodEntryId)}>
+                        Remove Food
+                    </button>
                 </div>
 
             </div>

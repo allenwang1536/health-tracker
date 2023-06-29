@@ -1,10 +1,13 @@
 import "./DialogBox.css";
 import { useState, useRef } from "react";
+import { onSubmit } from '../config/foods';
 
 function DialogBox() {
 
+    // const foodsCollectionRef = collection(db, "food-entries");
+
     const dialogRef = useRef(null);
-    const [mealType, setMealType] = useState("breakfast");
+    const [mealType, setMealType] = useState("Breakfast");
     const [mealName, setMealName] = useState("");
     const [calories, setCalories] = useState();
     const [notes, setNotes] = useState("");
@@ -24,14 +27,15 @@ function DialogBox() {
     const handleSubmit = () => {
         closeDialog();
 
-        postEntries(mealType, mealName, calories, notes);
+        onSubmit(mealType, mealName, calories, notes);
 
-        setMealType("breakfast");
+        // postEntries(mealType, mealName, calories, notes);
+
+        setMealType("Breakfast");
         setMealName("");
         setCalories("");
         setNotes("");
     }
-
 
     return (
         <>
@@ -39,16 +43,16 @@ function DialogBox() {
                 <button className="add-new-food-button" onClick={openDialog}>
                     Add New Food
                 </button>
-                
+
                 <dialog ref={dialogRef} method="dialog" className="dialogue-box-pop-up">
                     <div className="dialogue-box-info">
                         <p> MEAL </p>
                         <label>
                             <select value={mealType} onChange={e => setMealType(e.target.value)}>
-                                <option value="breakfast">Breakfast</option>
-                                <option value="lunch">Lunch</option>
-                                <option value="dinner">Dinner</option>
-                                <option value="snack">Snack</option>
+                                <option value="Breakfast">Breakfast</option>
+                                <option value="Lunch">Lunch</option>
+                                <option value="Dinner">Dinner</option>
+                                <option value="Snack">Snack</option>
                             </select>
                         </label>
                         <label> Meal Name: <input value={mealName} onChange={e => setMealName(e.target.value)} /> </label>

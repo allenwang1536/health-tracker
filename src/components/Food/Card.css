@@ -54,3 +54,11 @@
     left: 1.5rem;
     top: 1.5rem;
 }
+
+.add-new-food-button, .remove-food-button {
+    border-radius: 10px;
+    background-color: #4c606d;
+    color: white;
+    padding: 0.5rem 1rem 0.5rem;
+    outline: 1px solid #101314f1;
+}
