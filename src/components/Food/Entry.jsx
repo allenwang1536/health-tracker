@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './FoodEntry.css';
+import './Entry.css';
 
-export default function FoodEntry( {onClick, food, calories } ) {
+export default function Entry( {onClick, food, calories } ) {
 
     return (
         <>

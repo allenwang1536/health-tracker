@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './FoodInfo.css';
+import './Info.css';
 
-export default function FoodInfo( { foodEntry } ) {
+export default function Info( { foodEntry } ) {
     return (
         <>
             <p><strong>Food: </strong>{foodEntry.name}</p>

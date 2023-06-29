@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-import FoodEntry from './FoodEntry';
-import DialogBox from './DialogBox';
-import FoodInfo from './FoodInfo';
+import Entry from './Entry';
+import DialogBox from '../DialogBox';
+import Info from './Info';
+import { getDocs, collection, addDoc} from 'firebase/firestore';
 
-import './FoodCard.css';
 
-export default function FoodCard({ mealType, foodEntries }) {
+import './Card.css';
+
+export default function Card({ mealType, foodEntries }) {
 
     const [isTransitioned, setIsTransitioned] = useState(false);
     const [curFoodEntryId, setCurFoodEntryId] = useState(null);
@@ -32,7 +34,7 @@ export default function FoodCard({ mealType, foodEntries }) {
 
                     {foodEntries.map((foodEntry) => {
                         return (
-                            < FoodEntry onClick={() => handleTransitionOpen(foodEntry.id)} food={foodEntry.name} calories={foodEntry.calories} />
+                            < Entry onClick={() => handleTransitionOpen(foodEntry.id)} food={foodEntry.name} calories={foodEntry.calories} />
                         )
                     })}
 
@@ -43,7 +45,7 @@ export default function FoodCard({ mealType, foodEntries }) {
                     <form onClick={handleTransitionClose} className="return-button">
                         <p> &lt; </p>
                     </form>
-                    {curFoodEntryId === null ? null : <FoodInfo foodEntry={foodEntries.filter((foodEntry) => foodEntry.id === curFoodEntryId)[0]} />}
+                    {curFoodEntryId === null ? null : <Info foodEntry={foodEntries.filter((foodEntry) => foodEntry.id === curFoodEntryId)[0]} />}
                 </div>
 
             </div>

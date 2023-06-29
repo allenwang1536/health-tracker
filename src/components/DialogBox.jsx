@@ -1,6 +1,5 @@
 import "./DialogBox.css";
 import { useState, useRef } from "react";
-import { postEntries, readEntries } from "../../api/calories.js";
 
 function DialogBox() {
 
