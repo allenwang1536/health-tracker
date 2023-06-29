@@ -1,8 +1,8 @@
-import "./DialogBox.css";
+import "./AddFood.css";
 import { useState, useRef } from "react";
-import { onSubmit } from '../config/foods';
+import { onSubmit } from '../../config/foods';
 
-function DialogBox({ defaultMealType}) {
+function AddFood({ defaultMealType }) {
 
     const dialogRef = useRef(null);
     const [mealType, setMealType] = useState(defaultMealType);
@@ -67,4 +67,4 @@ function DialogBox({ defaultMealType}) {
     )
 }
 
-export default DialogBox;
+export default AddFood;

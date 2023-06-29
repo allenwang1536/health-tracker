@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Entry from './Entry';
-import DialogBox from '../DialogBox';
+import AddFood from './AddFood';
 import Info from './Info';
 import { removeFood } from '../../config/foods';
 
@@ -39,11 +39,11 @@ export default function Card({ mealType, foodEntries }) {
 
                     {foodEntries.map((foodEntry) => {
                         return (
-                            < Entry onClick={() => handleTransitionOpen(foodEntry.id)} foodEntry={foodEntry} />
+                            <Entry onClick={() => handleTransitionOpen(foodEntry.id)} foodEntry={foodEntry} />
                         )
                     })}
 
-                    <DialogBox className="add-new-food-button" defaultMealType={mealType}/>
+                    <AddFood className="add-new-food-button" defaultMealType={mealType} />
                 </div>
 
                 <div className="card-content-expanded">
